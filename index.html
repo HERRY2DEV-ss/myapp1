@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digigroo - Full Premium Experience</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800;900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==============================
+       LOADER & BASIC STYLES
+       ============================== */
+    body { font-family: 'Montserrat', sans-serif; }
+    #loader-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #050505; z-index: 9999; display: flex; justify-content: center; align-items: center; perspective: 1500px; }
+    .logo-container { position: relative; display: flex; flex-direction: column; align-items: center; transform-style: preserve-3d; will-change: transform, opacity; }
+    .d-mark { position: relative; font-size: 10rem; font-weight: 300; line-height: 0.8; margin-bottom: 2rem; display: flex; align-items: flex-end; }
+    .d-letter { text-shadow: -4px 0px 15px rgba(255, 60, 60, 0.5); transform-origin: bottom center; }
+    .dot-wrapper { position: absolute; bottom: 15px; right: -25px; width: 20px; height: 20px; }
+    .d-dot { width: 100%; height: 100%; background-color: #ff3c3c; border-radius: 50%; box-shadow: 0 0 20px rgba(255, 60, 60, 1); transform-origin: bottom center; }
+    .shockwave { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; border: 2px solid #ff3c3c; border-radius: 50%; opacity: 0; pointer-events: none; }
+    .main-text-wrapper { position: relative; display: flex; align-items: center; font-size: 4.5rem; font-weight: 300; letter-spacing: 0.25em; overflow: hidden; padding: 10px 0; }
+    .main-letter { display: inline-block; will-change: transform, opacity, filter; }
+    .interlock-o-1 { margin-right: -0.35em; position: relative; z-index: 2; }
+    .interlock-o-2 { position: relative; z-index: 1; }
+    .light-sweep { position: absolute; top: 0; left: -150%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent); transform: skewX(-25deg); z-index: 5; pointer-events: none; }
+    .subtext-wrapper { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; font-size: 1rem; letter-spacing: 0.5em; color: #888888; }
+    .subtext-dot { width: 6px; height: 6px; background-color: #ff3c3c; border-radius: 50%; }
+    .dial-img-group { will-change: clip-path, transform; }
+  </style>
+</head>
+
+<body class="min-h-screen w-full overflow-x-hidden text-white bg-[linear-gradient(to_bottom,#9e005d_0%,#66003c_40%,#1a001a_70%,#000000_100%)] overflow-y-hidden">
+
+  <div class="fixed inset-0 pointer-events-none z-0 opacity-80" style="background-image: repeating-radial-gradient(circle at bottom right, transparent, transparent 40px, rgba(255, 255, 255, 0.03) 41px, rgba(255, 255, 255, 0.03) 80px);"></div>
+
+  <div id="loader-wrapper">
+    <div class="logo-container">
+      <div class="d-mark">
+        <span class="d-letter">d</span>
+        <div class="dot-wrapper"><div class="shockwave"></div><div class="d-dot"></div></div>
+      </div>
+      <div class="main-text-wrapper">
+        <div class="light-sweep"></div>
+        <span class="main-letter">D</span><span class="main-letter">I</span><span class="main-letter">G</span><span class="main-letter">I</span><span class="main-letter">G</span><span class="main-letter">R</span><span class="main-letter interlock-o-1">O</span><span class="main-letter interlock-o-2">O</span>
+      </div>
+      <div class="subtext-wrapper">
+        <span class="sub-word">GROWTH</span><div class="subtext-dot"></div>
+        <span class="sub-word">VISIBILITY</span><div class="subtext-dot"></div>
+        <span class="sub-word">AUTHORITY</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="fixed top-0 left-0 w-full z-50 bg-black/20 backdrop-blur-md border-b border-white/10 px-8 py-5 md:px-16 flex justify-between items-center font-['Montserrat',sans-serif] text-white transition-all duration-300 opacity-0" id="main-navbar">
+    <div class="flex items-center gap-4 cursor-pointer">
+      <div class="w-11 h-11 bg-white rounded-full flex items-center justify-center text-black font-black text-2xl tracking-tighter shadow-lg">d.</div>
+      <span class="font-bold tracking-widest text-lg uppercase drop-shadow-md">DIGIGROO</span>
+    </div>
+    <div class="flex items-center gap-6 md:gap-8">
+      <button class="border border-white hover:bg-white hover:text-black transition-all duration-300 px-6 py-2 md:px-7 md:py-2 rounded-full font-medium text-sm tracking-wide shadow-sm">contact us</button>
+      <button class="flex flex-col gap-[6px] cursor-pointer group p-1">
+        <span class="w-8 h-[2px] bg-white group-hover:w-6 transition-all duration-300"></span>
+        <span class="w-8 h-[2px] bg-white transition-all duration-300"></span>
+      </button>
+    </div>
+  </header>
+
+  <div id="main-content" class="relative w-full opacity-0 flex flex-col z-10 bg-transparent">
+
+    <div class="fixed top-28 right-16 w-12 h-12 bg-black/20 rounded-xl flex items-center justify-center text-xl shadow-lg z-20 backdrop-blur-sm hero-animate opacity-0 cursor-pointer hidden md:flex border border-white/10">✨</div>
+
+    <main class="relative w-full h-screen flex flex-col items-center justify-center pt-10" style="perspective: 1200px;">
+      <div class="laptop-wrapper relative z-10 opacity-0" style="transform: rotateX(15deg) rotateY(-20deg) rotateZ(-12deg) scale(0.95); transform-style: preserve-3d;">
+        <div class="w-[350px] md:w-[750px] h-[250px] md:h-[480px] bg-[#e0e0e0] rounded-[20px] border-[4px] border-[#b0b0b0] relative p-2 md:p-4 shadow-[-30px_40px_50px_rgba(0,0,0,0.6)] box-border">
+          <div class="w-full h-full bg-[#111] rounded-xl overflow-hidden relative flex items-center bg-[url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center bg-blend-overlay" style="background-color: #7a8282;">
+            <div class="pl-8 md:pl-16 flex flex-col justify-center">
+              <h2 class="text-white text-[3rem] md:text-[5rem] font-black leading-none drop-shadow-xl tracking-tight">MUSIC</h2>
+              <p class="text-white text-xl md:text-3xl font-mono mt-2 tracking-[0.2em]">12/01</p>
+            </div>
+          </div>
+          <div class="absolute -bottom-4 left-0 w-full h-4 bg-[#a0a0a0] rounded-b-[20px]" style="transform: translateZ(-10px);"></div>
+        </div>
+      </div>
+      <div class="absolute right-[5%] bottom-[10%] md:right-[12%] md:bottom-[15%] z-20 flex flex-col items-center web-graphic opacity-0" style="transform: rotate(5deg);">
+        <h1 class="text-white text-[4rem] md:text-[7rem] font-black tracking-tighter leading-[0.8] drop-shadow-2xl">web</h1>
+        <div class="bg-black text-white text-[0.6rem] md:text-xs font-bold px-5 py-1.5 rounded-full -mt-2 z-10 shadow-xl tracking-wider uppercase">development</div>
+        <svg class="w-20 md:w-36 -mt-4 md:-mt-6" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10,10 v40 a40,40 0 0,0 80,0 v-20" stroke="white" stroke-width="15" stroke-linecap="round"/>
+          <line x1="25" y1="10" x2="25" y2="40" stroke="white" stroke-width="4" stroke-dasharray="4 4"/>
+          <line x1="10" y1="10" x2="35" y2="40" stroke="white" stroke-width="4"/>
+        </svg>
+      </div>
+    </main>
+
+    <section class="relative w-full py-32 px-8 md:px-16 overflow-hidden z-10 bg-transparent flex flex-col justify-center items-center">
+      <div class="w-full lg:w-7/12 mx-auto relative z-10 gs-reveal-section opacity-0 flex flex-col items-start translate-y-8">
+        <h2 class="text-[2.5rem] md:text-[4.5rem] font-light leading-none mb-1 tracking-tight">In the early days of</h2>
+        <h1 class="font-['Syncopate',sans-serif] text-[3.5rem] md:text-[6.5rem] font-bold leading-[0.9] uppercase tracking-[-0.02em] mb-10 flex">DI<span class="tracking-[-0.13em]">FF</span>USION</h1>
+        <div class="space-y-8 text-[1rem] md:text-[1.15rem] leading-[1.8] text-white/90 font-medium">
+          <p>of the internet in Italy, interest in digital was at an all-time high. That's when we started working on web development, building ever-deeper experience and skills — the result of the various evolutionary phases we have gone through in the use of digital tools.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative w-full pb-32 pt-10 px-8 md:px-16 overflow-hidden z-10 bg-transparent flex flex-col justify-center items-center">
+      <div class="w-full lg:w-7/12 mx-auto relative z-10 gs-reveal-section opacity-0 flex flex-col items-start translate-y-8">
+        <h2 class="text-[2rem] md:text-[3.8rem] font-normal leading-[1.1] mb-1 tracking-tight">Building websites means</h2>
+        <h2 class="text-[2rem] md:text-[3.8rem] font-normal leading-[1.1] mb-2 tracking-tight">keeping up with the times and</h2>
+        <div class="font-['Syncopate',sans-serif] text-[2.5rem] md:text-[5rem] font-bold leading-[1] uppercase tracking-[-0.02em] mb-12 text-[#ff00bf] flex items-center">
+          NE
+          <div class="flex flex-col justify-between h-[0.55em] w-12 md:w-32 mx-[-0.05em] mt-[0.02em]">
+            <div class="w-full h-[18%] bg-[#ff00bf]"></div><div class="w-full h-[18%] bg-[#ff00bf]"></div><div class="w-full h-[18%] bg-[#ff00bf]"></div>
+          </div>
+          CESSITY
+        </div>
+        <div class="relative w-full bg-gradient-to-r from-[#d60080] to-[#f500ad] rounded-2xl p-8 md:p-10 shadow-2xl">
+          <p class="text-white text-[1rem] md:text-[1.15rem] leading-[1.7] font-medium pr-10">That's what we did with DAB, building, over the years, various multilingual product microsites and, in the midst of the Covid-19 pandemic, a live streaming and on-demand replay application.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden z-10 mt-10" id="transition-banner">
+      <div class="absolute inset-0 z-0 banner-img-container" style="clip-path: inset(0 15% 0 15%);">
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=2000" alt="Transition" class="w-full h-[120%] object-cover -mt-[10%] parallax-banner-img">
+      </div>
+      <div class="relative z-20 text-center px-4 gs-reveal-section opacity-0 translate-y-10">
+        <h2 class="font-['Syncopate',sans-serif] text-[2rem] md:text-[4rem] font-bold tracking-widest uppercase text-white drop-shadow-2xl">The Next Phase</h2>
+        <div class="w-24 h-1 bg-[#ff00bf] mx-auto mt-4"></div>
+      </div>
+    </section>
+
+    <section id="dial-section" class="relative w-full flex bg-transparent z-10 border-t border-white/10">
+      
+      <div class="w-[30%] lg:w-[400px] sticky top-0 h-screen hidden md:flex items-center justify-center border-r border-white/10">
+        <div id="dial" class="relative w-full ml-12 z-20"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#ff00bf] rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
+      </div>
+
+      <div class="flex-1 flex flex-col overflow-hidden relative">
+        <div class="dial-content-block min-h-screen flex items-center px-10 md:px-20 py-20 relative" data-title="Content">
+          <div class="relative z-10 w-full md:w-3/5 dial-text-group">
+            <h2 class="font-['Syncopate',sans-serif] text-[3rem] md:text-[5rem] font-bold mb-6 tracking-tight uppercase leading-[0.9] drop-shadow-2xl text-white">Content</h2>
+            <p class="text-xl md:text-2xl opacity-80 max-w-[500px] leading-relaxed font-light">The layout now features a deep magenta-to-black gradient with a dynamic, highly advanced content flow.</p>
+          </div>
+          <div class="absolute right-10 md:right-20 top-1/2 -translate-y-1/2 w-[250px] md:w-[400px] h-[350px] md:h-[500px] rounded-3xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.8)] dial-img-group z-0">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800" alt="Abstract" class="w-full h-[130%] object-cover dial-parallax-img -mt-[15%]">
+          </div>
+        </div>
+        <div class="dial-content-block min-h-screen flex flex-col justify-center px-10 md:px-20 py-20 relative" data-title="Marketing">
+          <div class="w-full h-[300px] md:h-[450px] rounded-3xl overflow-hidden shadow-2xl relative dial-img-group">
+             <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000" alt="Tech" class="w-full h-[130%] object-cover dial-parallax-img -mt-[15%] opacity-60">
+             <div class="absolute inset-0 bg-gradient-to-t from-[#66003c] to-transparent mix-blend-multiply"></div>
+          </div>
+          <div class="relative z-10 -mt-20 md:-mt-32 ml-5 md:ml-10 bg-white/10 backdrop-blur-xl border border-white/20 p-8 md:p-12 rounded-3xl shadow-2xl w-[90%] md:w-[70%] dial-text-group">
+            <h2 class="font-['Syncopate',sans-serif] text-[2.5rem] md:text-[4.5rem] font-bold mb-4 tracking-tight uppercase text-[#ff00bf] drop-shadow-md">Marketing</h2>
+            <p class="text-lg md:text-xl opacity-90 leading-relaxed font-medium">Smooth continuous scroll is fully active, matching the new theme with immersive visual depth and clarity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials-wrapper" class="relative w-full h-screen bg-transparent z-10 flex flex-col items-center justify-center overflow-hidden border-t border-white/10 mt-20">
+      
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        <h1 class="font-['Syncopate',sans-serif] text-[15vw] md:text-[12vw] font-black uppercase text-white whitespace-nowrap leading-none tracking-tighter select-none drop-shadow-2xl">
+          TESTIMONIALS
+        </h1>
+      </div>
+
+      <div class="relative z-10 w-[90%] max-w-[500px] h-[400px] md:h-[450px]">
+        <div id="card-1" class="absolute inset-0 w-full h-full bg-black/40 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 md:p-10 flex flex-col justify-center items-center text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <div class="w-12 h-12 bg-[#ff00bf] rounded-full mb-6 flex items-center justify-center font-bold text-lg shadow-lg">M</div>
+          <p class="text-[1.1rem] md:text-[1.3rem] font-medium leading-relaxed opacity-100 text-white">
+            "We were looking for a trusted partner... and that’s what we got. The team was responsive, collaborative, reliable and flexible, often going above and beyond to help us achieve our vision."
+          </p>
+          <div class="mt-6 font-['Syncopate',sans-serif] text-xs font-bold tracking-widest text-[#ff99cc] uppercase">Melbourne Girls Grammar</div>
+        </div>
+
+        <div id="card-2" class="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-8 md:p-10 flex flex-col justify-center items-center text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <div class="w-12 h-12 bg-white text-[#66003c] rounded-full mb-6 flex items-center justify-center font-bold text-lg shadow-lg">D</div>
+          <p class="text-[1.1rem] md:text-[1.3rem] font-medium leading-relaxed opacity-100 text-white">
+            "Their attention to detail and highly advanced technical skills completely transformed our digital presence. Smooth, creative, and exactly what we needed to stand out in the market."
+          </p>
+          <div class="mt-6 font-['Syncopate',sans-serif] text-xs font-bold tracking-widest text-white uppercase">DAB Industries</div>
+        </div>
+
+        <div id="card-3" class="absolute inset-0 w-full h-full bg-gradient-to-br from-[#66003c]/80 to-[#1a001a]/80 backdrop-blur-2xl border border-[#ff00bf]/40 rounded-3xl p-8 md:p-10 flex flex-col justify-center items-center text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <div class="w-12 h-12 bg-gradient-to-tr from-[#ff00bf] to-[#66003c] rounded-full mb-6 flex items-center justify-center font-bold text-lg shadow-lg border border-white/30">S</div>
+          <p class="text-[1.1rem] md:text-[1.3rem] font-medium leading-relaxed opacity-100 text-white">
+            "Incredible experience from start to finish. The animations are flawless, and the performance is top-tier. A game-changer for our e-commerce platform."
+          </p>
+          <div class="mt-6 font-['Syncopate',sans-serif] text-xs font-bold tracking-widest text-[#ff99cc] uppercase">Studio Milano</div>
+        </div>
+      </div>
+
+      <button class="relative z-20 mt-16 border border-black hover:border-white hover:bg-white hover:text-black bg-black text-white transition-all duration-300 px-8 py-3 rounded-full font-bold flex items-center gap-3 text-sm tracking-widest uppercase shadow-2xl">
+        Read All Reviews
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      </button>
+    </section>
+
+  </div>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const tl = gsap.timeline();
+
+    // 1. Creative Loader Entrance
+    tl.from(".d-letter", { y: 50, opacity: 0, filter: "blur(20px)", duration: 1.5, ease: "power3.out" })
+      .from(".d-dot", { y: -150, opacity: 0, duration: 0.6, ease: "bounce.out" }, "-=1")
+      .to(".d-dot", { scaleY: 0.5, scaleX: 1.5, duration: 0.15, yoyo: true, repeat: 1 })
+      .to(".shockwave", { scale: 5, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.3")
+      .from(".main-letter", { y: 80, z: 100, opacity: 0, filter: "blur(10px)", rotationX: -90, duration: 1, stagger: 0.05, ease: "back.out(1.5)", transformOrigin: "bottom center" }, "-=0.5")
+      .to(".light-sweep", { left: "150%", duration: 1.2, ease: "power2.inOut" }, "-=0.2")
+      .from(".sub-word, .subtext-dot", { y: 20, opacity: 0, duration: 0.8, stagger: 0.05, ease: "power3.out" }, "-=1");
+
+    // 2. Fly-through Reveal
+    tl.to(".logo-container", {
+      scale: 30, opacity: 0, duration: 1.2, ease: "expo.inOut", delay: 1.2, 
+      onStart: () => { 
+        gsap.to("#main-content", { opacity: 1, duration: 0.5 }); 
+        gsap.to("#main-navbar", { opacity: 1, duration: 0.8, delay: 0.5 });
+      },
+      onComplete: () => {
+        document.body.classList.remove('overflow-y-hidden'); 
+        document.getElementById("loader-wrapper").remove(); 
+      }
+    })
+    
+    // 3. Hero Section Entrance
+    .to(".hero-animate", { y: 0, opacity: 1, duration: 1, ease: "power3.out" }, "-=0.8")
+    .to(".laptop-wrapper", { y: 0, opacity: 1, duration: 1.5, ease: "back.out(1.2)" }, "-=0.8")
+    .to(".web-graphic", { opacity: 1, rotation: 5, duration: 1.2, ease: "elastic.out(1, 0.6)" }, "-=1");
+
+    // 4. Continuous Floating Hover Physics
+    gsap.to(".laptop-wrapper", { y: -15, rotationZ: "-11deg", duration: 4, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 4.5 });
+    gsap.to(".web-graphic", { y: -20, rotation: 8, duration: 3.5, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 4.8 });
+
+    // 5. Standard GSAP Reveals
+    gsap.utils.toArray(".gs-reveal-section").forEach(section => {
+      gsap.to(section, {
+        scrollTrigger: { trigger: section, start: "top 85%", toggleActions: "play none none reverse" },
+        y: 0, opacity: 1, duration: 1.2, ease: "power3.out"
+      });
+    });
+
+    // 6. Transition Banner Animation
+    gsap.to(".banner-img-container", {
+      clipPath: "inset(0 0% 0 0%)",
+      ease: "power2.inOut",
+      scrollTrigger: { trigger: "#transition-banner", start: "top bottom", end: "center center", scrub: true }
+    });
+    gsap.to(".parallax-banner-img", {
+      yPercent: 20, ease: "none",
+      scrollTrigger: { trigger: "#transition-banner", start: "top bottom", end: "bottom top", scrub: true }
+    });
+
+    // 7. SCROLL DIAL LOGIC
+    const dialSection = document.getElementById('dial-section');
+    const dial = document.getElementById('dial');
+    const contentBlocks = document.querySelectorAll('.dial-content-block'); 
+
+    const items = Array.from(contentBlocks).map(sec => {
+      const el = document.createElement('div');
+      el.className = 'absolute origin-left text-[1.5rem] md:text-[2rem] font-bold font-["Syncopate",sans-serif] uppercase tracking-wide transition-all duration-300 opacity-0 whitespace-nowrap pointer-events-none text-white/20';
+      el.innerText = sec.dataset.title;
+      return dial.appendChild(el);
+    });
+
+    const updateDial = () => {
+      if (!dialSection) return;
+      const rect = dialSection.getBoundingClientRect();
+      const scrollPos = -rect.top; 
+      const maxScroll = dialSection.offsetHeight - window.innerHeight;
+      
+      let progress = 0;
+      if (maxScroll > 0) progress = Math.max(0, Math.min(1, scrollPos / maxScroll));
+      
+      const activeFloat = progress * (items.length - 1);
+
+      items.forEach((item, i) => {
+        const d = i - activeFloat;
+        const abs = Math.abs(d);
+        
+        item.style.transform = `translate(${abs * -8}px, ${d * 60}px) rotate(${d * 12}deg)`;
+        item.style.opacity = Math.max(0, 1 - abs * 0.45);
+        item.style.filter = `blur(${abs * 1.5}px)`;
+        
+        if (Math.round(activeFloat) === i) {
+          item.classList.add('text-[#ff00bf]', 'drop-shadow-[0_0_15px_rgba(255,0,191,0.5)]');
+          item.classList.remove('text-white/20');
+        } else {
+          item.classList.remove('text-[#ff00bf]', 'drop-shadow-[0_0_15px_rgba(255,0,191,0.5)]');
+          item.classList.add('text-white/20');
+        }
+      });
+    };
+    window.addEventListener('scroll', updateDial);
+    updateDial(); 
+
+    // 8. ADVANCED PREMIUM IMAGE REVEALS (CLIP-PATH) - SYNTAX FIXED
+    contentBlocks.forEach(block => {
+      const textGroup = block.querySelector('.dial-text-group');
+      const imgGroup = block.querySelector('.dial-img-group');
+      const parallaxImg = block.querySelector('.dial-parallax-img');
+
+      const blockTl = gsap.timeline({
+        scrollTrigger: { trigger: block, start: "top 75%", toggleActions: "play none none reverse" }
+      });
+
+      if(textGroup) blockTl.from(textGroup, { y: 60, opacity: 0, duration: 1.2, ease: "power4.out" });
+      
+      if(imgGroup) {
+        blockTl.fromTo(imgGroup, 
+          { clipPath: "inset(100% 0% 0% 0%)", scale: 1.1 }, 
+          { clipPath: "inset(0% 0% 0% 0%)", scale: 1, duration: 1.5, ease: "expo.inOut" }
+        , "-=0.8");
+      }
+
+      if(parallaxImg && imgGroup) {
+        gsap.to(parallaxImg, {
+          yPercent: 30, ease: "none",
+          scrollTrigger: { trigger: imgGroup, start: "top bottom", end: "bottom top", scrub: true }
+        });
+      }
+    }); // <-- CLOSING BRACKET FIXED HERE
+
+    // 9. HIGHLY ADVANCED TESTIMONIALS SLIDER
+    gsap.set("#card-1", { yPercent: 0, opacity: 1, scale: 1, rotation: -2 });
+    gsap.set(["#card-2", "#card-3"], { yPercent: 120, opacity: 0, scale: 0.8, rotation: 10 });
+
+    const testiTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#testimonials-wrapper",
+        start: "top top",      
+        end: "+=2500",         
+        pin: true,             
+        scrub: 1,              
+      }
+    });
+
+    testiTl.to("#card-1", { yPercent: -120, opacity: 0, rotation: -15, scale: 0.8, duration: 1 })
+           .to("#card-2", { yPercent: 0, opacity: 1, rotation: 2, scale: 1, duration: 1 }, "<0.2")
+           .to("#card-2", { rotation: 0, duration: 0.5 }) 
+           .to("#card-2", { yPercent: -120, opacity: 0, rotation: 15, scale: 0.8, duration: 1 })
+           .to("#card-3", { yPercent: 0, opacity: 1, rotation: -1, scale: 1, duration: 1 }, "<0.2");
+
+  </script>
+</body>
+</html>

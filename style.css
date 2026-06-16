@@ -1,0 +1,154 @@
+
+ 
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap');
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #050505; 
+      color: white;
+      margin: 0;
+      overflow: hidden; 
+    }
+
+    /* ==============================
+       1. LOADER STYLES (Kept Exact)
+       ============================== */
+    #loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #050505;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1500px;
+    }
+
+    .logo-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+    }
+
+    .d-mark {
+      position: relative;
+      font-size: 10rem; 
+      font-weight: 300;
+      line-height: 0.8;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .d-letter {
+      text-shadow: -4px 0px 15px rgba(255, 60, 60, 0.5);
+      transform-origin: bottom center;
+    }
+
+    .dot-wrapper {
+      position: absolute;
+      bottom: 15px;
+      right: -25px;
+      width: 20px;
+      height: 20px;
+    }
+
+    .d-dot {
+      width: 100%; 
+      height: 100%;
+      background-color: #ff3c3c;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 60, 60, 1);
+      transform-origin: bottom center;
+    }
+
+    .shockwave {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      border: 2px solid #ff3c3c;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .main-text-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      font-size: 4.5rem; 
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      overflow: hidden; 
+      padding: 10px 0;
+    }
+
+    .main-letter {
+      display: inline-block;
+      will-change: transform, opacity, filter;
+    }
+
+    .interlock-o-1 { margin-right: -0.35em; position: relative; z-index: 2; }
+    .interlock-o-2 { position: relative; z-index: 1; }
+
+    .light-sweep {
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: skewX(-25deg);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .subtext-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      letter-spacing: 0.5em;
+      color: #888888;
+    }
+
+    .subtext-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #ff3c3c;
+      border-radius: 50%;
+    }
+
+    /* ==============================
+       2. MAIN WEBSITE STYLES
+       ============================== */
+    /* Background Pattern for Main Site */
+    .bg-waves {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: repeating-radial-gradient(
+        circle at bottom right,
+        transparent,
+        transparent 40px,
+        rgba(255, 255, 255, 0.03) 41px,
+        rgba(255, 255, 255, 0.03) 80px
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Hardware Accelerated 3D Container */
+    .laptop-3d-container {
+      perspective: 1200px;
+    }
+ 
